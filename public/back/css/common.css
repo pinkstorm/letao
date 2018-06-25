@@ -15,6 +15,11 @@ ul {
   list-style: none;
 }
 
+/*添加字体色样式*/
+.red {
+  color: #A94442;
+}
+
 
 .body_bg  {
   background-color: #222D32;
@@ -40,6 +45,11 @@ ul {
   top: 0;
   left: 0;
   z-index: 999;
+  transition: all 1s;
+}
+
+.lt_aside.hidemenu {
+  left: -180px;
 }
 
 .lt_aside .brand {
@@ -110,6 +120,12 @@ ul {
   background-color: pink;
   padding-left: 180px;
   padding-top: 50px;
+  transition: all 1s;
+}
+
+.lt_main.hidemenu {
+  padding-left: 0px;
+  transition: all 1s;
 }
 
 .lt_topbar {
@@ -120,6 +136,11 @@ ul {
   top: 0;
   left: 0;
   padding-left: 180px;
+  transition: all 1s;
+}
+
+.lt_topbar.hidemenu {
+  padding-left: 0px;
 }
 
 .lt_topbar a {
@@ -136,6 +157,8 @@ ul {
 .lt_main .breadcrumb {
   margin-top: 20px;
 }
+
+
 
 
 
