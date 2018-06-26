@@ -50,17 +50,43 @@
     <a href="#" class="pull-right icon_logOut"><i class="glyphicon glyphicon-log-out"></i></a>
   </div>
 
-  <!--路径导航-->
+
   <!--流式布局容器,有默认的左右padding值,15px-->
   <div class="container-fluid">
+
+    <!--路径导航-->
     <ol class="breadcrumb">
       <li><a href="index.html">管理系统</a></li>
       <li class="active">用户管理</li>
     </ol>
+
+    <!--表格-->
+    <div class="lt_content">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>用户名</th>
+          <th>手机号</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--占坑-->
+      </tbody>
+    </table>
+  </div>
+
+    <!--分页-->
+    <div class="paginator text-right">
+      <ul></ul>
+    </div>
+
   </div>
 </div>
 
-<!--模态框-->
+<!--退出功能模态框-->
 <div class="modal fade">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
@@ -80,16 +106,44 @@
 </div>
 
 
+<!--准备模板引擎-->
+<script type="text/template" id="tmp">
+  {{ each rows v i }}
+    <tr>
+      <td>{{ ( i + 1 ) + ( page - 1 ) * size }}</td>
+      <td>{{ v.username }}</td>
+      <td>{{ v.mobile }}</td>
+      <td>{{ v.isDelete === 1?'正常':'禁用' }}</td>
+      <td data-id="{{ v.id }}">
+        {{ if v.isDelete === 1 }}
+          <button class="btn btn-danger">禁用</button>
+        {{ /if }}
+
+        {{ if v.isDelete === 0 }}
+          <button class="btn btn-success">正常</button>
+        {{ /if }}
+      </td>
+    </tr>
+  {{ /each }}
+
+</script>
+
+
+
+
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<!--引入基于bootstrap的插件-->
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
 <!--引入进度条插件-->
 <script src="./lib/nprogress/nprogress.js"></script>
-
-
-
+<!--引入模板引擎插件-->
+<script src="./lib/artTemplate/template-web.js"></script>
 <!--引入通用js-->
 <script src="./js/common.js"></script>
+<!--引入用户页面的js-->
+<script src="./js/user.js"></script>
 
 </body>
 </html>
