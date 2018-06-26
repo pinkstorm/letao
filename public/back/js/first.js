@@ -44,4 +44,52 @@ $(function () {
   $('.btn-add').click(function () {
     $('#addFitst').modal('show');
   })
+
+  //3.表单校验功能
+  $('#form').bootstrapValidator({
+    //2. 指定校验时的图标显示，默认是bootstrap风格
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    //3.指定校验字段
+    fields: {
+      categoryName: {
+          validators: {
+              notEmpty: {
+                message: "请输入一级分类"
+              }
+          }
+      }
+    }
+
+  });
+
+  //4.注册表单校验成功事件
+  $("#form").on('success.form.bv', function (e) {
+    e.preventDefault();
+    //使用ajax提交逻辑
+    //获取表单数据,传递给后台修改数据库
+    $.ajax({
+      type: 'post',
+      url: '/category/addTopCategory',
+      data: $('#form').serialize(),
+      dataType: 'json',
+      success: function (info) {
+        console.log(info);
+        if( info.success ) {
+          //1.关闭模态框
+          $('#addFitst').modal('hide');
+          //2.重新渲染第一屏
+          currentPage = 1;
+          render(currentPage);
+          //3.清空模态框中表单的内容及校验状态(传true)
+          $('#form').data('bootstrapValidator').resetForm(true);
+        }
+      }
+    })
+
+
+  });
 })
