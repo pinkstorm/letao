@@ -10,7 +10,7 @@ if( location.href.indexOf('login.html') === -1 ) {
     url: '/employee/checkRootLogin',
     dataType: 'json',
     success: function (info) {
-      console.log(info);
+      //console.log(info);
       if (info.error === 400) {
         //未登录,跳转到登录页面去登录
         location.href = 'login.html';
@@ -62,7 +62,7 @@ $('.modal .btn-logOut').click(function () {
     url: '/employee/employeeLogout',
     dataType: 'json',
     success: function (info) {
-      console.log(info);
+      //console.log(info);
       if( info.success ) {
         //跳转到登录页
         location.href = 'login.html';
