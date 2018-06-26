@@ -51,7 +51,7 @@ $('.lt_main .icon_menu').click(function () {
 
 //3.点击右侧退出按钮,弹出模态框
 $('.lt_main .icon_logOut').click(function () {
-  $('.modal').modal('toggle');
+  $('#logoutModal').modal('toggle');
 })
 
 //模态框登出按钮功能:
