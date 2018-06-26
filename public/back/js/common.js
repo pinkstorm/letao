@@ -16,7 +16,7 @@ if( location.href.indexOf('login.html') === -1 ) {
         location.href = 'login.html';
       }
       if( info.success ) {
-        //用户已登录,无需什么操作
+        //用户已登录,无需什么操作dx
       }
     }
   })

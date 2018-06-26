@@ -29,15 +29,15 @@
     <!--导航-->
     <div class="nav">
       <ul>
-        <li><a href="#" class="current"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></a></li>
-        <li><a href="#" class="category"><i class="glyphicon glyphicon-list"></i><span>分类管理</span></a></li>
+        <li><a href="user.html" class="current"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></a></li>
+        <li><a href="javascript:;" class="category"><i class="glyphicon glyphicon-list"></i><span>分类管理</span></a></li>
 
         <div class="child" style="display:none">
-          <a href="#">一级分类</a>
-          <a href="#">二级分类</a>
+          <a href="first.html">一级分类</a>
+          <a href="second.html">二级分类</a>
         </div>
 
-        <li><a href="#"><i class="glyphicon glyphicon-tags"></i><span>商品管理</span></a></li>
+        <li><a href="product.html"><i class="glyphicon glyphicon-tags"></i><span>商品管理</span></a></li>
       </ul>
     </div>
   </div>
@@ -54,10 +54,17 @@
     <!--流式布局容器,有默认的左右padding值,15px-->
    <div class="container-fluid">
      <ol class="breadcrumb">
-       <li><a href="#">管理系统</a></li>
-       <li class="active">用户管理</li>
+       <li><a href="index.html">管理系统</a></li>
+       <li class="active">首页</li>
      </ol>
    </div>
+
+    <!--图表区域-->
+    <div class="lt_content">
+      <div class="echarts_1 pull-left"></div>
+      <div class="echarts_2 pull-right"></div>
+    </div>
+
   </div>
 
     <!--模态框-->
@@ -82,14 +89,19 @@
 
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<!--基于bootstrap的表单验证插件-->
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <!--引入进度条插件-->
 <script src="./lib/nprogress/nprogress.js"></script>
-
-
+<!--引入echarts插件-->
+<script src="./lib/echarts/echarts.min.js"></script>
 
 <!--引入通用js-->
 <script src="./js/common.js"></script>
+<!--引入首页的js-->
+<script src="./js/index.js"></script>
+
+
 
 </body>
 </html>
