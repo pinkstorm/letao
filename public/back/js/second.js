@@ -69,6 +69,10 @@ $(function () {
     $('.btnTxt').text( $(this).text() );
     //当点击某一个a标签的时候,把他的id复制给name="categoryId"的隐藏域
     $('[name="categoryId"]').val( $(this).data('id') );
+    //当点击了某一个a标签及选择了一个分类之后,手动添加校验成功的提示
+    // 用户选择了一级分类后, 需要将 name="categoryId" input 框的校验状态置成 VALID
+    // 参数1: 字段名, 参数2: 设置成什么状态, 参数3: 回调(配置提示信息)
+    $('#form').data('bootstrapValidator').updateStatus('categoryId','VALID');
 
   })
 
@@ -77,19 +81,24 @@ $(function () {
   $("#fileupload").fileupload({
     dataType:"json",
     //e：事件对象
-    //data：图片上传后的对象，通过e.result.picAddr可以获取上传后的图片地址
+    //data：图片上传后的对象，通过data.result.picAddr可以获取上传后的图片地址
     done:function (e, data) {
       console.log(data.result.picAddr);
       //把图片地址设置给img标签
       $('#img-box').attr('src',data.result.picAddr);
       //把图片地址保存在name="brandLogo"的隐藏域中
       $('[name="brandLogo"]').val(data.result.picAddr);
+      //文件上传成功之后,手动添加隐藏域的校验成功状态的图标提示
+      $('#form').data('bootstrapValidator').updateStatus('brandLogo','VALID');
     }
   });
 
 
   //5.进行表单验证功能
   $('#form').bootstrapValidator({
+    //1.添加表单隐藏域校验
+    excluded: [],
+
     //2. 指定校验时的图标显示，默认是bootstrap风格
     feedbackIcons: {
       valid: 'glyphicon glyphicon-ok',
@@ -123,6 +132,11 @@ $(function () {
 
     }
   })
+
+
+
+
+
 
   //当表单校验成功时,阻止默认提交行为,改成ajax提交
   $("#form").on('success.form.bv', function (e) {
