@@ -4,6 +4,7 @@
 
 //除了登录页面,其他每个页面在进入之前都要发送请求给后台验证用户登录状态
 
+//判断地址栏的地址是否包含longin.html,如果不包含,说明不是登录页面,进行登录状态验证
 if( location.href.indexOf('login.html') === -1 ) {
   $.ajax({
     type: 'get',
@@ -24,11 +25,20 @@ if( location.href.indexOf('login.html') === -1 ) {
 
 //进度条功能
 //结合ajax全局事件实现进度条功能
+// ajax 全局事件
+// .ajaxComplete()  每个ajax完成时调用, (不管成功还是失败)
+// .ajaxSuccess()   每个ajax成功时调用
+// .ajaxError()     每个ajax失败时调用
+// .ajaxSend()      每个ajax发送前调用
+
+// .ajaxStart()     第一个ajax发送时调用
+// .ajaxStop()      所有的ajax请求都完成时调用
 //当第一个ajax请求发送时
 $(document).ajaxStart(function () {
   NProgress.start();
 })
 
+//当所有的ajax请求结束时
 $(document).ajaxStop(function () {
   //模拟网络延迟
   setInterval(function () {

@@ -29,6 +29,7 @@ $(function () {
             max: 6,
             message: "用户名长度必须在 2-6位"
           },
+          //自定义校验规则
           callback: {
             message: "用户名不存在"
           }
