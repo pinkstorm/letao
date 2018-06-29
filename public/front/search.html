@@ -42,32 +42,7 @@
 
     <!--搜索历史部分-->
     <div class="lt_history">
-      <div class="title mui-clearfix">
-        <span class="mui-pull-left">搜索历史</span>
-        <span class="mui-pull-right"><i class="fa fa-trash"></i>清空记录</span>
-      </div>
-      <div class="content">
-        <ul>
-          <li>
-            <a class="mui-pull-left" href="#">1</a>
-            <i class="mui-pull-right mui-icon mui-icon-closeempty"></i>
-          </li>
-          <li>
-            <a class="mui-pull-left" href="#">1</a>
-            <i class="mui-pull-right mui-icon mui-icon-closeempty"></i>
-          </li>
-          <li>
-            <a class="mui-pull-left" href="#">1</a>
-            <i class="mui-pull-right mui-icon mui-icon-closeempty"></i>
-          </li>
-          <li>
-            <a class="mui-pull-left" href="#">1</a>
-            <i class="mui-pull-right mui-icon mui-icon-closeempty"></i>
-          </li>
-
-
-        </ul>
-      </div>
+     <!--大坑-->
     </div>
   </div>
 
@@ -100,9 +75,35 @@
       </li>
     </ul>
   </div>
-
-
 </div>
+
+
+<!--准备模板-->
+<script type="text/template" id="hisTmp">
+
+  {{ if arr.length === 0 }}
+    <p>没有更多历史记录了</p>
+  {{ else }}
+
+  <div class="title mui-clearfix">
+    <span class="mui-pull-left">搜索历史</span>
+    <span class="mui-pull-right span_delete"><i class="fa fa-trash"></i>清空记录</span>
+  </div>
+  <div class="content">
+    <ul>
+      {{ each arr v i }}
+      <li>
+        <a class="mui-pull-left" href="#">{{ v }}</a>
+        <i class="mui-pull-right mui-icon mui-icon-closeempty icon_delete" data-index="{{ i }}"></i>
+      </li>
+      {{ /each }}
+    </ul>
+  </div>
+
+  {{ /if }}
+
+
+</script>
 
 
 
