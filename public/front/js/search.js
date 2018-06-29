@@ -86,6 +86,9 @@ $(function () {
     //6.清空输入框的值
     $('.search_input').val('');
 
+    //7.在地址栏后面拼接关键字并跳转到搜索列表页
+    location.href = "searchList.html?value=" + value;
+
 
   })
 
