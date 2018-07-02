@@ -36,40 +36,27 @@
     <div class="mui-scroll-wrapper">
       <div class="mui-scroll">
         <!--这里放置真实显示的DOM内容-->
-        <li class="mui-table-view-cell mui-transitioning mui-selected cart_item">
-          <div class="mui-slider-right mui-disabled mui-selected">
-            <a class="mui-btn mui-btn-blue mui-icon mui-icon-compose btn_edit"></a>
-            <a class="mui-btn mui-btn-red mui-icon mui-icon-trash btn_delete"></a>
-          </div>
-          <div class="mui-slider-handle">
-            <div class="mui-table-cell">
+        <ul class="mui-table-view">
+          <!--大坑-->
 
-              <!--左侧-->
-              <div class="cart_img mui-pull-left">
-                <img src="./images/none.png">
-                <input type="checkbox">
-              </div>
-
-              <!--右侧-->
-              <div class="cart_info mui-pull-right">
-                <p class="pro_name mui-ellipsis-2">匡威三星标1970s converse复刻 142334c 144757c三星标黑色高帮</p>
-                <p>
-                  <span class="price">¥499.1</span>
-                  <span class="oldPrice">¥888.1</span>
-                  <span class="mui-pull-right">2双</span>
-                </p>
-                <p>鞋码:50</p>
-              </div>
+        </ul>
 
             </div>
           </div>
-        </li>
-
-
-
       </div>
-    </div>
+</div>
+
+<!--计价部分-->
+<div class="lt_total">
+  <div class="mui-pull-left">
+    <span>订单总金额</span>
+    <span id="totalText">00.00</span>
   </div>
+  <div class="mui-pull-right">
+    <a href="#">生成订单</a>
+  </div>
+</div>
+
 
   <!--底部-->
   <div class="lt_footer">
@@ -102,12 +89,80 @@
   </div>
 
 
-  <script type="text/template">
-    
+<!--准备购物车商品模板-->
+  <script type="text/template" id="cartTmp">
+
+    {{ each list v i }}
+
+    <li class="mui-table-view-cell">
+      <div class="mui-slider-right mui-disabled">
+        <a
+            data-id="{{ v.id }}"
+            data-productsize="{{ v.productSize }}"
+            data-size="{{ v.size }}"
+            data-productnum="{{ v.productNum }}"
+            data-num="{{ v.num }}"
+            class="mui-btn mui-btn-blue mui-icon mui-icon-compose btn_edit"></a>
+        <a data-id="{{ v.id }}" class="mui-btn mui-btn-red mui-icon mui-icon-trash btn_delete"></a>
+      </div>
+      <div class="mui-slider-handle">
+        <div class="mui-table-cell">
+
+          <!--左侧-->
+          <div class="cart_img">
+            <img src="{{ v.pic?v.pic[0].picAddr:'./images/none.png' }}">
+            <input data-price="{{ v.price }}"
+                   data-num="{{ v.num }}"
+
+                   type="checkbox" class="ck">
+          </div>
+
+          <!--右侧-->
+          <div class="cart_info">
+            <p class="pro_name mui-ellipsis-2">{{ v.proName }}</p>
+            <p>
+              <span class="price">¥{{ v.price }}</span>
+              <span class="oldPrice">¥{{ v.oldPrice }}</span>
+              <span class="mui-pull-right">{{ v.num }}双</span>
+            </p>
+            <p>鞋码:{{ v.size }}</p>
+          </div>
+
+
+        </div>
+      </div>
+    </li>
+
+    {{ /each }}
   </script>
 
 
-</div>
+<!--准备编辑模板-->
+<script type="text/template" id="editTmp">
+   <div class="lt_size">
+     尺码:
+
+     <%
+      var start = productsize.split('-')[0];
+      var end = productsize.split('-')[1];
+      for(var i = start; i <= end; i++) {
+     %>
+     <span class="{{ i == size?'current':'' }}">{{ i }}</span>
+     <% } %>
+
+   </div>
+
+  <div class="lt_num">
+    数量:
+    <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1' data-numbox-max='{{ productnum}}'>
+      <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+      <input class="mui-numbox-input" type="number" value="1"/>
+      <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+    </div>
+  </div>
+</script>
+
+
 
 
 
@@ -132,6 +187,6 @@
 <!--引入common.js-->
 <script src="./js/common.js"></script>
 
-<scritpt src="./js/cart.js"></scritpt>
+<script src="./js/cart.js"></script>
 </body>
 </html>

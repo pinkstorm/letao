@@ -179,3 +179,20 @@ img {
 .lt_product .mui-ellipsis-2 {
   height: 40px;
 }
+
+
+/*公共的尺码样式*/
+
+.lt_size span {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  background-color: #f5f5f5;
+  padding: 3px;
+  line-height: 25px;
+}
+
+.lt_size span.current {
+  background-color: orange;
+}
