@@ -10,10 +10,16 @@ ul {
   list-style: none;
 }
 
+li {
+  list-style: none;
+}
+
 img {
   display: block;
   width: 100%;
 }
+
+/**/
 
 .lt_container {
   width: 100%;

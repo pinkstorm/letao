@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="./css/common.css">
 
   <!--引入本页面的css-->
-  <link rel="stylesheet" href="./css/searchList.css">
+  <link rel="stylesheet" href="./css/cart.css">
 
 
 </head>
@@ -26,42 +26,49 @@
 <div class="lt_container">
   <!-- 头部 -->
   <div class="lt_header">
-    <!--返回上一页-->
     <a href="javascript:history.go(-1);" class="icon_left"><i class="mui-icon mui-icon-back"></i></a>
-    <h3>商品列表</h3>
+    <h3>购物车</h3>
   </div>
 
   <!--主体部分-->
   <div class="lt_main">
-
     <!--区域滚动-->
     <div class="mui-scroll-wrapper">
       <div class="mui-scroll">
         <!--这里放置真实显示的DOM内容-->
-        <!--1.搜索框部分-->
-        <div class="lt_search">
-          <input type="text" placeholder="请输入搜索关键字" class="search_input">
-          <button class="mui-btn mui-btn-primary search_btn">搜索</button>
-        </div>
+        <li class="mui-table-view-cell mui-transitioning mui-selected cart_item">
+          <div class="mui-slider-right mui-disabled mui-selected">
+            <a class="mui-btn mui-btn-blue mui-icon mui-icon-compose btn_edit"></a>
+            <a class="mui-btn mui-btn-red mui-icon mui-icon-trash btn_delete"></a>
+          </div>
+          <div class="mui-slider-handle">
+            <div class="mui-table-cell">
 
-        <!--2.商品分类部分-->
-        <div class="lt_sort">
-          <a href="#">上架时间 <i class="fa fa-angle-down"></i></a>
-          <a data-type="price" href="#">价格 <i class="fa fa-angle-down"></i></a>
-          <a data-type="num" href="#">库存 <i class="fa fa-angle-down"></i></a>
-          <a href="#">折扣 <i class="fa fa-angle-down"></i></a>
-        </div>
+              <!--左侧-->
+              <div class="cart_img mui-pull-left">
+                <img src="./images/none.png">
+                <input type="checkbox">
+              </div>
 
-        <!--3.商品部分-->
-        <div class="lt_product">
-          <!--大坑-->
-          <!--<div class="loading"></div>-->
-        </div>
+              <!--右侧-->
+              <div class="cart_info mui-pull-right">
+                <p class="pro_name mui-ellipsis-2">匡威三星标1970s converse复刻 142334c 144757c三星标黑色高帮</p>
+                <p>
+                  <span class="price">¥499.1</span>
+                  <span class="oldPrice">¥888.1</span>
+                  <span class="mui-pull-right">2双</span>
+                </p>
+                <p>鞋码:50</p>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+
 
       </div>
     </div>
-
-
   </div>
 
   <!--底部-->
@@ -79,7 +86,7 @@
           <p>分类页</p>
         </a>
       </li>
-      <li>
+      <li class="current">
         <a href="cart.html">
           <i class="fa fa-shopping-cart"></i>
           <p>购物车</p>
@@ -93,30 +100,25 @@
       </li>
     </ul>
   </div>
+
+
+  <script type="text/template">
+    
+  </script>
+
+
 </div>
 
 
-<!--准备商品部分的模板引擎-->
-<script type="text/template" id="proTmp">
-  <ul class="mui-clearfix">
 
-    {{ each data v i }}
 
-    <li>
-      <a href="#" data-id="{{ v.id }}">
-        <img src="{{ v.pic[0]?v.pic[0].picAddr:'./images/none.png' }}">
-        <p class="mui-ellipsis-2">{{ v.proName }}</p>
-        <p>
-          <span class="price">¥{{ v.price }}</span>
-          <span class="oldPrice">¥{{ v.oldPrice }}</span>
-        </p>
-        <button class="mui-btn mui-btn-primary">立即购买</button>
-      </a>
-    </li>
 
-    {{ /each }}
-  </ul>
-</script>
+
+
+
+
+
+
 
 
 
@@ -129,7 +131,7 @@
 <script src="./lib/artTemplate/template-web.js"></script>
 <!--引入common.js-->
 <script src="./js/common.js"></script>
-<!--引入本页面的js-->
-<script src="./js/searchList.js"></script>
+
+<scritpt src="./js/cart.js"></scritpt>
 </body>
 </html>

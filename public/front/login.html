@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="./css/common.css">
 
   <!--引入本页面的css-->
-  <link rel="stylesheet" href="./css/searchList.css">
+  <link rel="stylesheet" href="./css/index.css">
 
 
 </head>
@@ -26,42 +26,36 @@
 <div class="lt_container">
   <!-- 头部 -->
   <div class="lt_header">
-    <!--返回上一页-->
-    <a href="javascript:history.go(-1);" class="icon_left"><i class="mui-icon mui-icon-back"></i></a>
-    <h3>商品列表</h3>
+    <a href="index.html" class="icon_left"><i class="fa fa-home"></i></a>
+    <h3>登录</h3>
   </div>
 
   <!--主体部分-->
   <div class="lt_main">
-
     <!--区域滚动-->
     <div class="mui-scroll-wrapper">
       <div class="mui-scroll">
         <!--这里放置真实显示的DOM内容-->
-        <!--1.搜索框部分-->
-        <div class="lt_search">
-          <input type="text" placeholder="请输入搜索关键字" class="search_input">
-          <button class="mui-btn mui-btn-primary search_btn">搜索</button>
-        </div>
 
-        <!--2.商品分类部分-->
-        <div class="lt_sort">
-          <a href="#">上架时间 <i class="fa fa-angle-down"></i></a>
-          <a data-type="price" href="#">价格 <i class="fa fa-angle-down"></i></a>
-          <a data-type="num" href="#">库存 <i class="fa fa-angle-down"></i></a>
-          <a href="#">折扣 <i class="fa fa-angle-down"></i></a>
-        </div>
+        <!--输入表单-->
+        <form class="mui-input-group">
+          <div class="mui-input-row">
+            <label>用户名</label>
+            <input type="text" name="username" class="mui-input-clear" placeholder="请输入用户名">
+          </div>
+          <div class="mui-input-row">
+            <label>密码</label>
+            <input type="password" name="password" class="mui-input-password" placeholder="请输入密码">
+          </div>
+          <div class="mui-button-row">
+            <button type="button" class="mui-btn mui-btn-primary loginBtn" >登录</button>
+            <button type="reset" class="mui-btn mui-btn-danger" >重置</button>
+          </div>
+        </form>
 
-        <!--3.商品部分-->
-        <div class="lt_product">
-          <!--大坑-->
-          <!--<div class="loading"></div>-->
-        </div>
 
       </div>
     </div>
-
-
   </div>
 
   <!--底部-->
@@ -85,7 +79,7 @@
           <p>购物车</p>
         </a>
       </li>
-      <li>
+      <li class="current">
         <a href="user.html">
           <i class="fa fa-user"></i>
           <p>会员中心</p>
@@ -93,30 +87,20 @@
       </li>
     </ul>
   </div>
+
+
 </div>
 
 
-<!--准备商品部分的模板引擎-->
-<script type="text/template" id="proTmp">
-  <ul class="mui-clearfix">
 
-    {{ each data v i }}
 
-    <li>
-      <a href="#" data-id="{{ v.id }}">
-        <img src="{{ v.pic[0]?v.pic[0].picAddr:'./images/none.png' }}">
-        <p class="mui-ellipsis-2">{{ v.proName }}</p>
-        <p>
-          <span class="price">¥{{ v.price }}</span>
-          <span class="oldPrice">¥{{ v.oldPrice }}</span>
-        </p>
-        <button class="mui-btn mui-btn-primary">立即购买</button>
-      </a>
-    </li>
 
-    {{ /each }}
-  </ul>
-</script>
+
+
+
+
+
+
 
 
 
@@ -129,7 +113,8 @@
 <script src="./lib/artTemplate/template-web.js"></script>
 <!--引入common.js-->
 <script src="./js/common.js"></script>
-<!--引入本页面的js-->
-<script src="./js/searchList.js"></script>
+
+<!--引入此页面的js-->
+<script src="./js/login.js"></script>
 </body>
 </html>
